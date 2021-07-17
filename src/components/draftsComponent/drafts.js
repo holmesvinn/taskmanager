@@ -12,6 +12,7 @@ import "./drafts.css";
 import { useForm, Controller } from "react-hook-form";
 import AssignUser from "./assignedUser";
 import TimePickerComponent from "./timepicker";
+import { getAddData, getEditData } from "./drafts.service";
 
 function DatePickerComponent({ date, onChange }) {
   const dateArr = date
@@ -54,31 +55,15 @@ function NewTask(props) {
     <form
       onSubmit={handleSubmit((data) => {
         if (props.isEdit) {
-          const dateArr = data.date.split("/");
-          const newDate = `${dateArr[0]}/${Number(dateArr[1]) + 1}/${
-            dateArr[2]
-          }`;
-          const newData = { ...data, date: newDate };
-
-          dispatch(updateTask({ ...props.task, ...newData }));
+          dispatch(updateTask({ ...props.task, ...getEditData(data) }));
           props.setEdit(false);
         } else {
-          const dateArr =
-            data.date.indexOf("Z") === -1 ? data.date.split("/") : null;
-          const newDate =
-            data.date.indexOf("Z") !== -1
-              ? `${new Date(data.date).getDate()}/${
-                  new Date(data.date).getMonth() + 1
-                }/${new Date(data.date).getFullYear()}`
-              : `${dateArr[0]}/${Number(dateArr[1]) + 1}/${dateArr[2]}`;
-          const newData = { ...data, date: newDate };
-
           dispatch(
             addNewTask({
               ...data,
               completed: false,
               id: props.task.id,
-              ...newData,
+              ...getAddData(data),
             })
           );
 
@@ -178,12 +163,14 @@ function NewTask(props) {
         <div className="tasks-footer-wrapper">
           <div className="tasks-footer">
             {props.isEdit ? (
-              <button
-                onClick={() => {
-                  dispatch(deleteTask(props.task));
-                }}
-                className="delete-btn-draft"
-              ></button>
+              <div className="delete-btn-wrapper">
+                <button
+                  onClick={() => {
+                    dispatch(deleteTask(props.task));
+                  }}
+                  className="delete-btn-draft"
+                ></button>
+              </div>
             ) : null}
             <button
               className="cancel-btn-draft"

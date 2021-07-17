@@ -401,6 +401,10 @@ a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepic
   color: #d0021b;
 }
 
+.delete-btn-wrapper {
+  flex: 1 1 auto;
+}
+
 .delete-btn-draft {
   background: url("../../assets/delete.svg");
   background-repeat: no-repeat;
@@ -408,7 +412,8 @@ a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepic
   height: 20px;
   float: left;
   position: relative;
-  left: -135px;
+  left: 4px;
   top: 8px;
   border: 0;
+  float: left;
 }

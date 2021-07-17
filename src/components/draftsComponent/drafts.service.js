@@ -29,3 +29,20 @@ export const noMatches = (assignedUsers, userName) => {
     (user) => user.name.toLowerCase().indexOf(userName.toLowerCase()) !== -1
   );
 };
+
+export const getEditData = (data) => {
+  const dateArr = data.date.split("/");
+  const newDate = `${dateArr[0]}/${Number(dateArr[1]) + 1}/${dateArr[2]}`;
+  return { ...data, date: newDate };
+};
+
+export const getAddData = (data) => {
+  const dateArr = data.date.indexOf("Z") === -1 ? data.date.split("/") : null;
+  const newDate =
+    data.date.indexOf("Z") !== -1
+      ? `${new Date(data.date).getDate()}/${
+          new Date(data.date).getMonth() + 1
+        }/${new Date(data.date).getFullYear()}`
+      : `${dateArr[0]}/${Number(dateArr[1]) + 1}/${dateArr[2]}`;
+  return { ...data, date: newDate };
+};
