@@ -1,0 +1,414 @@
+.task-single-unit {
+  background: #edf7fc;
+  padding: 10px;
+}
+
+form {
+  border: 1px solid #e5e5e5;
+}
+
+.tasks-data {
+  margin-bottom: 8px;
+}
+.task-single-unit > .tasks-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-single-unit > .tasks-data > .task-description {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+* {
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.task-description > label {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #262e39;
+}
+
+.task-description > label > input {
+  display: block;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  height: 30px;
+  padding: 4px 6px;
+  margin: 6px 0 0 0;
+  box-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 8%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  letter-spacing: 0px;
+  border-radius: 3px;
+}
+
+input:focus {
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 6px rgb(155 191 219 / 60%) !important;
+  outline: 0 !important;
+  border-color: rgba(82, 168, 236, 0.8) !important;
+}
+
+.form-texts {
+  font-size: 14px;
+  font-weight: 400;
+  color: #262e39;
+  line-height: 20px;
+}
+
+/* ******************date time picker *************************** */
+.date-time-draft {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.datePicker-draft,
+.timePicker-draft {
+  width: 48%;
+}
+.timePicker-draft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.timePicker-draft > input {
+  display: block;
+  padding-left: 26px;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  height: 30px;
+  margin: 1px 0 0 0;
+  box-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 8%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  letter-spacing: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  color: #262e39;
+  line-height: 20px;
+}
+
+.timePicker-draft:before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  display: block;
+  background: url("../../assets/clock.svg");
+  top: 23px;
+  z-index: 11;
+}
+
+.timepicker-time-list-wrapper {
+  display: none;
+}
+.timePicker-draft > input:focus + .timepicker-time-list-wrapper,
+.timepicker-time-list-wrapper:hover {
+  display: block;
+  position: absolute;
+}
+
+.timepicker-time-list-wrapper {
+  background: #fafafa;
+  z-index: 11;
+  height: 200px;
+  border: 1px solid #ddd;
+  overflow-y: scroll;
+  top: 55px;
+  width: 98px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+}
+
+.timepicker-time-list-wrapper > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timepicker-time-list-wrapper > ul > li {
+  line-height: 20px;
+  padding: 3px 0 3px 5px;
+  cursor: pointer;
+  color: #000;
+  z-index: 111;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.timepicker-time-list-wrapper > ul > li:hover,
+.timepicker-time-list-wrapper > ul > li.selected-time-draft {
+  background: #1980ec;
+  color: #fff;
+}
+
+/************************************************************************************************************************* */
+
+/****************************************** react datepicker styles **********************************************************/
+.react-datepicker__header__dropdown.react-datepicker__header__dropdown--scroll {
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepicker__navigation--years-previous::before,
+a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepicker__navigation--years-upcoming:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: relative;
+  top: 42%;
+  left: 30%;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+}
+a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepicker__navigation--years-previous::before {
+  border-bottom: none;
+  border-top: 5px solid black;
+}
+.react-datepicker__triangle {
+  left: -40% !important;
+}
+.react-datepicker__day-names {
+  font-weight: 700;
+}
+.react-datepicker__header {
+  background-color: #ffffff;
+  width: auto;
+}
+.react-datepicker__month-year-read-view--down-arrow {
+  top: 4px !important;
+}
+.react-datepicker__navigation-icon {
+  top: 3px;
+}
+.react-datepicker__day-names {
+  width: auto;
+}
+.react-datepicker__month {
+  margin: 6px;
+}
+.react-datepicker__week {
+  width: auto;
+}
+.react-datepicker__day,
+.react-datepicker__day-name {
+  margin: 0;
+}
+
+.react-datepicker__input-container:before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  display: block;
+  position: absolute;
+  background: url("../../assets/calendar.svg");
+  top: 1px;
+}
+
+.react-datepicker__input-container > input {
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+  padding-left: 26px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 8%);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  color: #262e39;
+}
+
+.react-datepicker__input-container > input:focus {
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 6px rgb(155 191 219 / 60%) !important;
+  outline: 0 !important;
+  border-color: rgba(82, 168, 236, 0.8) !important;
+}
+/* ************************************************************************************************************ */
+
+/* ****************************************Assingn user list ************************************************ */
+
+.assign-user-draft {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.assign-user-input:focus ~ .assign-user-list,
+.assign-user-list:hover {
+  display: block;
+}
+
+.assign-user-list {
+  display: none;
+  background: #fafafa;
+  z-index: 111;
+  width: 100%;
+  height: fit-content;
+  top: 65px;
+  background-clip: padding-box;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 12px rgb(0 0 0 / 10%);
+  flex-direction: column;
+  color: #262e39;
+  line-height: 20px;
+  background-color: white;
+  max-height: 70vh;
+  position: absolute;
+}
+
+.assign-user-draft > input {
+  display: block;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  height: 30px;
+  padding: 4px 6px;
+  margin: 6px 0 0 0;
+  box-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 8%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  letter-spacing: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding-right: 20px;
+}
+
+.assign-user-list::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background: white;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #fafafa;
+  background-clip: padding-box;
+  top: -10px;
+  left: 10px;
+}
+
+.assign-user-list > ul {
+  list-style: none;
+  margin: 5px 0px;
+  padding: 0;
+}
+
+.assign-user-list > ul > li {
+  padding: 4px 6px 6px 35px;
+  font-size: 14px;
+  z-index: 1111;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.assign-user-list > ul > li:hover {
+  background-color: #f2f2f2;
+}
+
+.input-icon {
+  content: "";
+  width: 15px;
+  height: 15px;
+  right: 8px;
+  bottom: 8px;
+  background: url("../../assets/doublearrow.svg");
+  display: block;
+  position: absolute;
+}
+
+.assign-user-input:focus + .input-icon {
+  background: url("../../assets/search.svg") !important;
+}
+
+.tick-mark-user {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+}
+
+.tick-bg {
+  background: url("../../assets/tickmark.svg");
+}
+
+/********************************footer section**************************************/
+
+.tasks-footer-wrapper {
+  margin-bottom: 8px;
+}
+.tasks-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.cancel-btn-draft,
+.save-btn-draft {
+  border: 0;
+  font-size: 14px;
+}
+.cancel-btn-draft {
+  background: transparent;
+}
+
+.cancel-btn-draft:hover {
+  text-decoration: underline;
+  color: #3781b8;
+}
+
+.save-btn-draft {
+  background-color: #43b57a;
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
+  margin-left: 8px;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  color: white;
+}
+
+.save-btn-draft:active {
+  box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 15%);
+  background-color: #389766;
+}
+.save-btn-draft:focus {
+  background: #389766;
+  border-color: #389766;
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+/**********************************************************************************************/
+
+.description-error {
+  color: #d0021b;
+}
+
+.delete-btn-draft {
+  background: url("../../assets/delete.svg");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  float: left;
+  position: relative;
+  left: -135px;
+  top: 8px;
+  border: 0;
+}

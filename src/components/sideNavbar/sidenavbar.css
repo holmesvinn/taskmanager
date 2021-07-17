@@ -1,0 +1,7 @@
+.sidebar {
+  width: 18vw;
+  height: calc(100vh);
+  position: sticky;
+  top: 0;
+  background-color: #323e4d;
+}

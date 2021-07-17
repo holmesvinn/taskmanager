@@ -1,0 +1,83 @@
+.collapsed-task {
+  display: flex;
+  align-items: center;
+  background: #f9f9fa;
+  border-left: 1px solid #e5e5e5;
+  border-radius: 3px;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px;
+}
+
+.collapsed-task > .left-section {
+  flex: 1 1 auto;
+  display: flex;
+  max-width: 65%;
+}
+
+.collapsed-task > .left-section > img {
+  width: 32px;
+  margin-right: 8px;
+}
+
+/* .collapsed-task > .left-section > . description-wrapper{ */
+.description-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-wrapper > .description {
+  line-height: 16px;
+  font-weight: 500;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.description-wrapper > .date-time {
+  line-height: 16px;
+  font-size: 12px;
+  color: #464a55;
+}
+
+/* .collapsed-task > .right-section */
+
+.collapsed-task > .right-section {
+  flex: 1 1 auto;
+}
+
+.collapsed-task > .right-section > div {
+  float: right;
+}
+
+.right-section > div > button {
+  border: 1px solid #e5e5e5;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.right-section > div > .edit-button {
+  display: none;
+  background: url("../../assets/edit.png");
+  background-repeat: no-repeat;
+  background-size: 24px;
+  margin-right: 5px;
+}
+
+.right-section > div > .archive-button {
+  background: url("../../assets/archive.png");
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+.right-section > div > .done-button {
+  background: url("../../assets/tick.png");
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.collapsed-task:hover > .right-section > div > .edit-button {
+  display: inline;
+}

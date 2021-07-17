@@ -1,0 +1,48 @@
+/* .tasks-nav-bar */
+/* ****.tasks-section */
+/* *********tasks-head */
+/* *********collapsed-tasks */
+/* *************left-section */
+/* *************right-section */
+
+.tasks-nav-bar {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.tasks-section {
+  margin-top: 100px;
+  width: 86%;
+}
+
+.tasks-head {
+  display: flex;
+  height: 35px;
+  background: #f9f9fa;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+}
+
+.tasks-head > h4 {
+  margin: 0;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #262e39;
+  letter-spacing: 1px;
+  flex: 1 1 auto;
+  line-height: 35px;
+}
+
+.tasks-head > button {
+  width: 35px;
+  font-size: 20px;
+  background: #f9f9f9;
+  border: none;
+  border-left: 2px solid #e5e5e5;
+}
+
+.font-small {
+  font-size: 12px !important;
+}
