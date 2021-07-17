@@ -28,7 +28,7 @@ const tasksReducer = (state = tasksInitialState, { type, payload }) => {
       return { ...state, taskDrafts: drafts };
 
     case ActionTypes.ADD_TASK:
-      taskData.push({ ...payload, completed: false });
+      taskData.unshift({ ...payload, completed: false });
       return { ...state, tasks: taskData };
 
     case ActionTypes.UPDATE_TASK:

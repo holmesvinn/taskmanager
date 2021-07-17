@@ -6,6 +6,13 @@ import NewTask from "../draftsComponent/drafts";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../store/store-helper/appActions";
 
+const transformToDate = (IsoDate) => {
+  const dateObj = new Date(IsoDate);
+  return `${dateObj.getDate()}/${
+    dateObj.getMonth() + 1
+  }/${dateObj.getFullYear()}`;
+};
+
 function CollapsedTask({ task, assignUsers, user }) {
   const [edit, setedit] = useState(false);
   const dispatch = useDispatch();
@@ -33,7 +40,8 @@ function CollapsedTask({ task, assignUsers, user }) {
                 {task.description}
               </span>
               <span className="date-time">
-                {task.date} {task.time ? "at " + task.time : ""}
+                {transformToDate(task.date)}
+                {task.time ? "at " + task.time : ""}
               </span>
             </div>
           </div>

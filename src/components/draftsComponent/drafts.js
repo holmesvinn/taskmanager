@@ -12,17 +12,10 @@ import "./drafts.css";
 import { useForm, Controller } from "react-hook-form";
 import AssignUser from "./assignedUser";
 import TimePickerComponent from "./timepicker";
-import { getAddData, getEditData } from "./drafts.service";
 
 function DatePickerComponent({ date, onChange }) {
-  const dateArr = date
-    ? date.split("/")
-    : [new Date().getDate(), new Date().getMonth(), new Date().getFullYear()];
-  const [selectedDate, setSelectedDate] = useState(
-    date
-      ? new Date(Number(dateArr[2]), Number(dateArr[1]) - 1, Number(dateArr[0]))
-      : new Date()
-  );
+  const initialDate = date ? new Date(date) : new Date();
+  const [selectedDate, setSelectedDate] = useState(initialDate);
   return (
     <DatePicker
       selected={selectedDate}
@@ -55,7 +48,7 @@ function NewTask(props) {
     <form
       onSubmit={handleSubmit((data) => {
         if (props.isEdit) {
-          dispatch(updateTask({ ...props.task, ...getEditData(data) }));
+          dispatch(updateTask({ ...props.task, ...data }));
           props.setEdit(false);
         } else {
           dispatch(
@@ -63,7 +56,6 @@ function NewTask(props) {
               ...data,
               completed: false,
               id: props.task.id,
-              ...getAddData(data),
             })
           );
 
@@ -110,9 +102,7 @@ function NewTask(props) {
                     control={control}
                     date={props.task.date}
                     onChange={(val) => {
-                      field.onChange(
-                        `${val.getDate()}/${val.getMonth()}/${val.getFullYear()}`
-                      );
+                      field.onChange(val.toISOString());
                     }}
                   />
                 )}

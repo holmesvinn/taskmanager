@@ -46,3 +46,13 @@ export const getAddData = (data) => {
       : `${dateArr[0]}/${Number(dateArr[1]) + 1}/${dateArr[2]}`;
   return { ...data, date: newDate };
 };
+
+export const getInitialDate = (date) => {
+  const dateArr = date
+    ? date.split("/")
+    : [new Date().getDate(), new Date().getMonth(), new Date().getFullYear()];
+
+  return date
+    ? new Date(Number(dateArr[2]), Number(dateArr[1]) - 1, Number(dateArr[0]))
+    : new Date();
+};

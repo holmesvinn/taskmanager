@@ -26,7 +26,7 @@ const assignedUser = {
 export const defaultTask = {
   id: Date.now(),
   description: "task description",
-  date: "15/7/2021",
+  date: "2021-07-17T19:39:04.799Z",
   time: "7:30am",
   completed: true,
   assignUsers: assignedUser,
