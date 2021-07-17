@@ -194,6 +194,10 @@ a.react-datepicker__navigation.react-datepicker__navigation--years.react-datepic
 .react-datepicker__navigation-icon {
   top: 3px;
 }
+.react-datepicker__triangle::before,
+.react-datepicker__triangle::after {
+  left: 20px !important;
+}
 .react-datepicker__day-names {
   width: auto;
 }

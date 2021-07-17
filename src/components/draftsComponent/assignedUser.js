@@ -78,7 +78,9 @@ function AssignUser({ user, assignUsers, onChange }) {
           setAssignedUser("");
           setHideUsersList(false);
         }}
-        onChange={() => {}}
+        onChange={(e) => {
+          // setAssignedUser(e.target.value);
+        }}
       />
       <div className="input-icon"></div>
 
