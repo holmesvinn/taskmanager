@@ -12,6 +12,12 @@ import "./drafts.css";
 import { useForm, Controller } from "react-hook-form";
 import AssignUser from "./assignedUser";
 import TimePickerComponent from "./timepicker";
+import {
+  addNewTaskEffect,
+  deleteTaskEffect,
+  updateTaskEffect,
+} from "../../store/store-helper/thunkEffects";
+import { getCurrentTimeWithOffset } from "./drafts.service";
 
 function DatePickerComponent({ date, onChange }) {
   const initialDate = date ? new Date(date) : new Date();
@@ -48,11 +54,11 @@ function NewTask(props) {
     <form
       onSubmit={handleSubmit((data) => {
         if (props.isEdit) {
-          dispatch(updateTask({ ...props.task, ...data }));
+          dispatch(updateTaskEffect({ ...props.task, ...data }));
           props.setEdit(false);
         } else {
           dispatch(
-            addNewTask({
+            addNewTaskEffect({
               ...data,
               completed: false,
               id: props.task.id,
@@ -115,7 +121,11 @@ function NewTask(props) {
               <Controller
                 control={control}
                 name="time"
-                defaultValue={props.task.time}
+                defaultValue={
+                  props.task?.time
+                    ? props.task?.time
+                    : getCurrentTimeWithOffset()
+                }
                 render={({ field }) => (
                   <TimePickerComponent
                     selectedTime={props.task.time}
@@ -156,7 +166,7 @@ function NewTask(props) {
               <div className="delete-btn-wrapper">
                 <button
                   onClick={() => {
-                    dispatch(deleteTask(props.task));
+                    dispatch(deleteTaskEffect(props.task));
                   }}
                   className="delete-btn-draft"
                 ></button>

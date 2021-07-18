@@ -3,22 +3,10 @@ import SidebarNav from "./components/sideNavbar/sidenavbar";
 import TaskBarNav from "./components/taskcreator/tasks";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addUserData,
-  updateAppError,
-  updateAvailableUsers,
-} from "./store/store-helper/appActions";
-import axios from "axios";
+import { updateAppError } from "./store/store-helper/appActions";
 
-import {
-  ACCESS_TOKEN_ENDPOINT,
-  API_URL,
-  headers,
-  USER_ID_ENDPOINT,
-  loginPostPayload,
-  ASSIGNED_USERS_ENDPOINT,
-} from "./App.config";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { initialiseAppliction } from "./store/store-helper/thunkEffects";
 
 function SecondaryNav({ availableUsers }) {
   return (
@@ -29,15 +17,6 @@ function SecondaryNav({ availableUsers }) {
   );
 }
 
-const getHeadersWithToken = (token) => {
-  return {
-    headers: {
-      ...headers,
-      Authorization: "Bearer " + token,
-    },
-  };
-};
-
 function App() {
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
@@ -46,24 +25,7 @@ function App() {
   useEffect(() => {
     (async function initialiseApp() {
       try {
-        const accessTokenData = await axios.post(
-          `${API_URL}${ACCESS_TOKEN_ENDPOINT}`,
-          loginPostPayload,
-          { headers }
-        );
-
-        const userID = await axios.get(
-          `${API_URL}${USER_ID_ENDPOINT}`,
-          getHeadersWithToken(accessTokenData.data.results.token)
-        );
-
-        const AssignedUsers = await axios.get(
-          `${API_URL}${ASSIGNED_USERS_ENDPOINT}`,
-          getHeadersWithToken(accessTokenData.data.results.token)
-        );
-
-        dispatch(updateAvailableUsers(AssignedUsers.data.results.data));
-        dispatch(addUserData(userID.data.results));
+        dispatch(initialiseAppliction());
       } catch (error) {
         dispatch(updateAppError(error));
         setError("Some Error occurred");

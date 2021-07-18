@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { timeGenerator } from "./drafts.service";
+import { getCurrentTimeWithOffset, timeGenerator } from "./drafts.service";
 
 function TimePickerList({ hideTimePicker, liClickHandler, time }) {
   return (
@@ -28,7 +28,9 @@ function TimePickerList({ hideTimePicker, liClickHandler, time }) {
 }
 
 export function TimePickerComponent({ selectedTime, onChange }) {
-  const [time, setTime] = useState(selectedTime ? selectedTime : "");
+  const [time, setTime] = useState(
+    selectedTime ? selectedTime : getCurrentTimeWithOffset()
+  );
   const [hideTimePicker, setHideTimePicker] = useState(false);
   const timeChangeHandler = () => {
     // TODO: do an element.indexOf and scroll the li

@@ -5,6 +5,7 @@ import { useState } from "react";
 import NewTask from "../draftsComponent/drafts";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../store/store-helper/appActions";
+import { updateTaskEffect } from "../../store/store-helper/thunkEffects";
 
 const transformToDate = (IsoDate) => {
   const dateObj = new Date(IsoDate);
@@ -66,7 +67,7 @@ function CollapsedTask({ task, assignUsers, user }) {
                 <button
                   onClick={() => {
                     dispatch(
-                      updateTask({ ...task, completed: !task.completed })
+                      updateTaskEffect({ ...task, completed: !task.completed })
                     );
                   }}
                   className={task.completed ? "done-button" : "archive-button"}

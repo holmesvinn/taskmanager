@@ -14,6 +14,13 @@ export const deleteDraftTask = (draft) => {
   };
 };
 
+export const addBunchTask = (tasks) => {
+  return {
+    type: ActionTypes.ADD_ALL_TASKS,
+    payload: tasks,
+  };
+};
+
 export const addNewTask = (newTask) => {
   return {
     type: ActionTypes.ADD_TASK,

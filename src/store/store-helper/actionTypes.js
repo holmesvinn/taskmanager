@@ -5,6 +5,7 @@ export const ActionTypes = {
 
   ADD_DRAFT_TASK: "[Tasks] add new tasks in the list",
   DELETE_DRAFT_TASK: "[Tasks] delete the draft task",
+  ADD_ALL_TASKS: "[Tasks] add bunch of all available tasks",
   ADD_TASK: "[Tasks] add a new task to the list of tasks",
   UPDATE_TASK: "[Tasks] update the particular task in the list",
   DELETE_TAKS: "[Tasks] delete a taks from the list of tasks",

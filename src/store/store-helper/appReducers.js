@@ -1,6 +1,5 @@
 import { ActionTypes } from "./actionTypes";
 import { combineReducers } from "redux";
-import { defaultTask } from "./mockdata";
 
 export const appInitialState = {
   user: {},
@@ -9,7 +8,7 @@ export const appInitialState = {
 };
 
 export const tasksInitialState = {
-  tasks: [defaultTask],
+  tasks: [],
   taskDrafts: [],
 };
 
@@ -26,6 +25,9 @@ const tasksReducer = (state = tasksInitialState, { type, payload }) => {
       const deleteIndex = drafts.findIndex((draft) => draft.id === payload);
       drafts.splice(deleteIndex, 1);
       return { ...state, taskDrafts: drafts };
+
+    case ActionTypes.ADD_ALL_TASKS:
+      return { ...state, tasks: payload };
 
     case ActionTypes.ADD_TASK:
       taskData.unshift({ ...payload, completed: false });

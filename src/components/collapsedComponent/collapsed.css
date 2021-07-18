@@ -18,6 +18,7 @@
 .collapsed-task > .left-section > img {
   width: 32px;
   margin-right: 8px;
+  max-height: 32px;
 }
 
 /* .collapsed-task > .left-section > . description-wrapper{ */
