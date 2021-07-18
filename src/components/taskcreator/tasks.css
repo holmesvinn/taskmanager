@@ -9,12 +9,14 @@
   width: 30%;
   display: flex;
   justify-content: center;
+  min-width: 370px;
 }
 
 .tasks-section {
   margin-top: 100px;
   width: 86%;
   max-width: 360px;
+  min-width: 320px;
 }
 
 .tasks-head {
