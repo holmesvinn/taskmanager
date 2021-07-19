@@ -28,7 +28,7 @@ function App() {
         dispatch(initialiseAppliction());
       } catch (error) {
         dispatch(updateAppError(error));
-        setError("Some Error occurred");
+        setError(error?.message ? error.message : "Some Error occurred");
       }
     })();
   }, []);
@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       {error ? (
-        <>Some Error Occurred while getting data </>
+        <>{error}</>
       ) : availableUsers ? (
         <SecondaryNav availableUsers={availableUsers} />
       ) : (
