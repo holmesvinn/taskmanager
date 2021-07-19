@@ -77,8 +77,8 @@ export const updateTaskEffect = (updateData) => async (dispatch, getState) => {
   console.log("updatedate existing task", updateData);
 
   if (
-    sessionStorage.getItem("accessToken") !== "undefined" ||
-    sessionStorage.getItem("accessToken") !== null
+    sessionStorage.getItem("accessToken") &&
+    sessionStorage.getItem("accessToken") !== "undefined"
   ) {
     const payload = getStoreToApiTransformation(updateData);
     const updateApiResult = await axios.put(
@@ -100,8 +100,8 @@ export const updateTaskEffect = (updateData) => async (dispatch, getState) => {
 export const deleteTaskEffect = (deletedata) => async (dispatch, getState) => {
   console.log("delete  task", deletedata);
   if (
-    sessionStorage.getItem("accessToken") !== "undefined" ||
-    sessionStorage.getItem("accessToken") !== null
+    sessionStorage.getItem("accessToken") &&
+    sessionStorage.getItem("accessToken") !== "undefined"
   ) {
     await axios.delete(
       `${API_URL}${TASK}${LEAD}/${deletedata.id}`,
@@ -115,8 +115,8 @@ export const addNewTaskEffect = (newTaskData) => async (dispatch, getState) => {
   console.log("add new task", newTaskData);
 
   if (
-    sessionStorage.getItem("accessToken") !== "undefined" ||
-    sessionStorage.getItem("accessToken") !== null
+    sessionStorage.getItem("accessToken") &&
+    sessionStorage.getItem("accessToken") !== "undefined"
   ) {
     const payload = getStoreToApiTransformation(newTaskData);
     const addApiResult = await axios.post(
