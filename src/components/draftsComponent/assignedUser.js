@@ -12,7 +12,7 @@ function AllAssignedUsersList({
   return (
     <li
       onClick={() => {
-        setAssignedUser(user.name);
+        setAssignedUser(user?.name);
         setHideUsersList(true);
         onChange(user);
       }}

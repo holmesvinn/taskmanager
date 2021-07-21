@@ -8,6 +8,7 @@ import {
   headers,
   USER_ID_ENDPOINT,
   ASSIGNED_USERS_ENDPOINT,
+  COMPANY_ID,
 } from "../../App.config";
 import {
   addBunchTask,
@@ -47,23 +48,39 @@ export const initialiseAppliction = () => async (dispatch, getState) => {
   );
   if (accessTokenData.data.results?.token) {
     sessionStorage.setItem("accessToken", accessTokenData.data.results.token);
+    sessionStorage.setItem(
+      "companyID",
+      "company_44a3f04d60ac451e86a22d26d15411a0"
+    );
 
     const userID = await axios.get(
-      `${API_URL}${USER_ID_ENDPOINT}`,
+      `${API_URL}${USER_ID_ENDPOINT}${COMPANY_ID}${sessionStorage.getItem(
+        "companyID"
+      )}`,
       getHeadersWithToken()
     );
 
     const AssignedUsers = await axios.get(
-      `${API_URL}${ASSIGNED_USERS_ENDPOINT}`,
+      `${API_URL}${ASSIGNED_USERS_ENDPOINT}${COMPANY_ID}${sessionStorage.getItem(
+        "companyID"
+      )}`,
       getHeadersWithToken()
     );
 
     const AllTasks = await axios.get(
-      `${API_URL}${TASK}${LEAD}`,
+      `${API_URL}${TASK}${LEAD}${COMPANY_ID}${sessionStorage.getItem(
+        "companyID"
+      )}`,
       getHeadersWithToken()
     );
 
-    dispatch(updateAvailableUsers(AssignedUsers.data.results.data));
+    dispatch(
+      updateAvailableUsers(
+        AssignedUsers.data.results.data
+          ? AssignedUsers.data.results.data
+          : [assignedUser, secondaryUser]
+      )
+    );
     dispatch(addUserData(userID.data.results));
     dispatch(addBunchTaskEffect(AllTasks));
   } else {
@@ -82,7 +99,9 @@ export const updateTaskEffect = (updateData) => async (dispatch, getState) => {
   ) {
     const payload = getStoreToApiTransformation(updateData);
     const updateApiResult = await axios.put(
-      `${API_URL}${TASK}${LEAD}/${updateData.id}`,
+      `${API_URL}${TASK}${LEAD}/${
+        updateData.id
+      }${COMPANY_ID}${sessionStorage.getItem("companyID")}`,
       payload,
       getHeadersWithToken()
     );
@@ -104,7 +123,9 @@ export const deleteTaskEffect = (deletedata) => async (dispatch, getState) => {
     sessionStorage.getItem("accessToken") !== "undefined"
   ) {
     await axios.delete(
-      `${API_URL}${TASK}${LEAD}/${deletedata.id}`,
+      `${API_URL}${TASK}${LEAD}/${
+        deletedata.id
+      }${COMPANY_ID}${sessionStorage.getItem("companyID")}`,
       getHeadersWithToken()
     );
   }
@@ -120,7 +141,9 @@ export const addNewTaskEffect = (newTaskData) => async (dispatch, getState) => {
   ) {
     const payload = getStoreToApiTransformation(newTaskData);
     const addApiResult = await axios.post(
-      `${API_URL}${TASK}${LEAD}`,
+      `${API_URL}${TASK}${LEAD}${COMPANY_ID}${sessionStorage.getItem(
+        "companyID"
+      )}`,
       payload,
       getHeadersWithToken()
     );

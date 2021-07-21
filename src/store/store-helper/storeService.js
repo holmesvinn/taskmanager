@@ -23,7 +23,7 @@ const getIsoStringForStore = (utcDateString) => {
 };
 
 const getAssignedUser = (userId, assignedUsersList) => {
-  return assignedUsersList.find((user) => user.user_id == userId);
+  return assignedUsersList.find((user) => user.user_id === userId);
 };
 
 export const getTaskDateFormat = (utcdate) => {
@@ -77,7 +77,7 @@ export const getApiToStoreTransformation = (taskApiResponse, assignUsers) => {
       const newTask = newTaskForStore(task, assignUsers);
       tasksForStore.push(newTask);
     });
-  } else {
+  } else if (results.id) {
     return [newTaskForStore(results, assignUsers)];
   }
 
@@ -86,7 +86,9 @@ export const getApiToStoreTransformation = (taskApiResponse, assignUsers) => {
 
 export const getStoreToApiTransformation = (taskDataStore) => {
   return {
-    assigned_user: taskDataStore.assignUsers.user_id,
+    assigned_user: taskDataStore?.assignUsers?.id
+      ? taskDataStore.assignUsers.id
+      : taskDataStore?.assignUsers?.user_id,
     task_date: getTaskDateFormat(taskDataStore.date),
     task_time: getTasTimeInSeconds(taskDataStore.time),
     is_completed: Number(taskDataStore.completed),

@@ -4,7 +4,7 @@ export const headers = {
 };
 
 export const loginPostPayload = {
-  email: "smithcheryl@yahoo.com",
+  email: "good@test3.com",
   password: "12345678",
 };
 
@@ -13,4 +13,5 @@ export const ACCESS_TOKEN_ENDPOINT = "/login";
 export const USER_ID_ENDPOINT = "/user";
 export const ASSIGNED_USERS_ENDPOINT = "/team";
 export const TASK = "/task";
-export const LEAD = "/lead_6996a7dcdddc4af3b4f71ccb985cea38";
+export const LEAD = "/lead_0a44acf4b9e94fbab7f865c42436d409";
+export const COMPANY_ID = "?company_id=";

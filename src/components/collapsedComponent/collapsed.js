@@ -30,7 +30,14 @@ function CollapsedTask({ task, assignUsers, user }) {
       ) : (
         <div className="collapsed-task">
           <div className="left-section">
-            <img src={task.assignUsers.icon} alt="user"></img>
+            <img
+              src={
+                task?.assignUsers?.icon
+                  ? task?.assignUsers?.icon
+                  : "http://www.gravatar.com/avatar/52b1414991aa8e22b7a15bb143d98c44?default=https%3A%2F%2Fs3.sloovi.com%2Favatar-default-icon.png"
+              }
+              alt="user"
+            ></img>
             <div className="description-wrapper">
               <span
                 style={{
